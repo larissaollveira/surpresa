@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oi lindo, surpresa para você</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7e9e3;
+            color: #333;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #container {
+            text-align: center;
+            max-width: 600px;
+            padding: 30px;
+            border: 2px solid #ffcccb;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            animation: popIn 0.6s ease forwards;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.6); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            font-size: 2em;
+            color: #ff5c5c;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            display: none;
+            margin: 15px 0;
+            font-size: 1.2em;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .message.show {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #ff5c5c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 92, 92, 0.3);
+        }
+
+        button:hover {
+            background-color: #ff4242;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Surpresa para Você</h1>
+        <p id="intro">Oi amor, eu queria te lembrar de algumas coisinhas...</p>
+        
+        <div id="messages">
+            <p class="message">Você é a pessoa mais especial para mim.</p>
+            <p class="message">Adoro nossos momentos juntos.</p>
+            <p class="message">Você me faz muito feliz e sou muito grata por ter você ao meu lado.</p>
+            <p class="message">Tenho certeza de que Deus está cuidando do nosso futuro, da nossa casa e da nossa futura família.</p>
+            <p class="message">E tem mais uma coisa que quero te dizer...</p>
+        </div>
+
+        <button onclick="showNextMessage()">Clique para ver</button>
+    </div>
+
+    <script>
+        let currentMessage = 0;
+
+        function showNextMessage() {
+            const messages = document.querySelectorAll('.message');
+            if (currentMessage < messages.length) {
+                messages[currentMessage].classList.add('show');
+                currentMessage++;
+            } else {
+                const button = document.querySelector('button');
+                button.textContent = 'Te amo muito!';
+                button.disabled = true;
+                button.style.cursor = 'default';
+                button.style.backgroundColor = '#ccc';
+            }
+        }
+    </script>
+</body>
+</html>
